@@ -1,0 +1,3 @@
+My name is abc.
+I am learning GenAI and LangChain.
+I am studying at university.
