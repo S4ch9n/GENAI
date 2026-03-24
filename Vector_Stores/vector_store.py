@@ -22,3 +22,8 @@ db = FAISS.from_documents(chunks, embeddings)
 
 print("Vector store created!")
 print(f"Total chunks stored: {len(chunks)}")
+
+#similarity search
+query = "What is algorithm complexity"
+result = db.similarity_search(query)
+print(result[0].page_content)
