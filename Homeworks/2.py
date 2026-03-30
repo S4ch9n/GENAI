@@ -14,21 +14,21 @@ load_dotenv()
 print("__________Exercise 1__________")
 model1 = ChatGroq(model="llama-3.1-8b-instant" , temperature=0.8) #higher temp. for more creative answer 
 
-model2 = ChatGroq(model="llama-3.1-8b-instant" , temperature=0.1) #lower tem. for more deterministic responses
+model2 = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.1)   #lower tem. for more deterministic responses
 
 prompts = ["Write a short poem about artificial intelligence.",
            "What are the key components of a neuralnetwork?",
            "List 5 tips for effective time management."]
 
 print("model 1 : temp -> 0.8")
-for prommpt in prompts:
-  result = model1.invoke(prommpt)
+for prompt in prompts:
+  result = model1.invoke(prompt)
   print(result.content)
   
 
 print("model 2 : temp -> 0.1") 
 for prompt in prompts:
-  result = model2.invoke(prompts)
+  result = model2.invoke(prompt)
   print(result.content) 
 
 
@@ -52,7 +52,7 @@ IMPORTANT: Your response must be *only* that JSON. DO NOT include any illustrati
 """
 
 prompt_template = PromptTemplate(
-  template="""" You are a JSON-only assistant.
+  template=""" You are a JSON-only assistant.
 Task: Generate info about the movie "{movie_name}" in JSON format.
 {format_instruction}""",
 input_variables=["movie_name"],
@@ -63,7 +63,7 @@ movie_chain = prompt_template | model2 | json_parse
 
 movie_name = "The aveangers"
 
-result = movie_chain.invoke(movie_name)
+result = movie_chain.invoke({"movie name  " :  movie_name})
 print("Parsed result:")
 print(f"Title: {result['title']}")
 print(f"Director: {result['director']}")
