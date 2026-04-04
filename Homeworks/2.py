@@ -63,7 +63,7 @@ movie_chain = prompt_template | model2 | json_parse
 
 movie_name = "The aveangers"
 
-result = movie_chain.invoke({"movie name  " :  movie_name})
+result = movie_chain.invoke({"movie_name": movie_name})
 print("Parsed result:")
 print(f"Title: {result['title']}")
 print(f"Director: {result['director']}")
